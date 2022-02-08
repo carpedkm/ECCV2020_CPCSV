@@ -43,7 +43,8 @@ class VideoFolderDataset(torch.utils.data.Dataset):
                 self.followings.append(following_imgs)
             np.save(folder + 'img_cache' + str(min_len) + '.npy', self.images)
             np.save(folder + 'following_cache' + str(min_len) + '.npy', self.followings)
-        train_id, test_id = np.load(self.dir_path + 'train_test_ids.npy', allow_pickle=True, encoding = 'latin1')
+        # train_id, test_id = np.load(self.dir_path + 'train_test_ids.npy', allow_pickle=True, encoding = 'latin1')
+        train_id, val_id, test_id = np.load(os.path.join(self.dir_path, 'train_seen_unseen_ids.npy'), allow_pickle=True)
         orders = train_id if data_type == 'train' else test_id
         orders = np.array(orders).astype('int32')
         self.images = self.images[orders]

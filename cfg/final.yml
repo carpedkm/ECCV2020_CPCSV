@@ -1,10 +1,10 @@
-CONFIG_NAME: 'final_model'
+CONFIG_NAME: 'final_model_new'
 
-DATASET_NAME: ''
+DATASET_NAME: 'pororo'
 EMBEDDING_TYPE: 'universal'
 GPU_ID: '0'
 Z_DIM: 100
-DATA_DIR: '../img_pororo/'
+DATA_DIR: './datasets/img_pororo/'
 IMSIZE: 64
 SESIZE: 64
 WORKERS: 6 

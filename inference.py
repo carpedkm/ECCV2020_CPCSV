@@ -142,7 +142,7 @@ class Infer(object):
 
     def inference(self, imageloader, storyloader, testloader, stage=1):
         netG = self.load_network_stageI(self.output_dir, load_ckpt=self.load_ckpt)
-        inference_samples(netG, testloader, save_dir)
+        inference_samples(netG, testloader, self.save_dir)
 
     def generate_story(self, netG, dataloader):
         from miscc.utils import images_to_numpy

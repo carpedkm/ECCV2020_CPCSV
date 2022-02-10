@@ -1,5 +1,5 @@
+# CONFIG_NAME: 'new_train_split_from_storyviz'
 CONFIG_NAME: 'final_model_new'
-
 DATASET_NAME: 'pororo'
 EMBEDDING_TYPE: 'universal'
 GPU_ID: '0'
@@ -22,8 +22,8 @@ IMAGE_RATIO: 5.0
 TRAIN:
     FLAG: True
     SEGMENT_NAME: 'img_segment' # the segmentation images before/after refinement (img_segment/img_segment_refine)
-    IM_BATCH_SIZE: 90
-    ST_BATCH_SIZE: 18
+    IM_BATCH_SIZE: 90 # 90 # 15 #90
+    ST_BATCH_SIZE: 18 # 3 # 3 #18
     MAX_EPOCH: 120
     LR_DECAY_EPOCH: 20
     SNAPSHOT_INTERVAL: 10

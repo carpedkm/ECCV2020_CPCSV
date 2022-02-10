@@ -43,8 +43,8 @@ class VideoFolderDataset(torch.utils.data.Dataset):
                 self.followings.append(following_imgs)
             np.save(folder + 'img_cache' + str(min_len) + '.npy', self.images)
             np.save(folder + 'following_cache' + str(min_len) + '.npy', self.followings)
-        # train_id, test_id = np.load(self.dir_path + 'train_test_ids.npy', allow_pickle=True, encoding = 'latin1')
-        train_id, val_id, test_id = np.load(os.path.join(self.dir_path, 'train_seen_unseen_ids.npy'), allow_pickle=True)
+        train_id, test_id = np.load(self.dir_path + 'train_test_ids.npy', allow_pickle=True, encoding = 'latin1')
+        # train_id, val_id, test_id = np.load(os.path.join(self.dir_path, 'train_seen_unseen_ids.npy'), allow_pickle=True)
         orders = train_id if data_type == 'train' else test_id
         orders = np.array(orders).astype('int32')
         self.images = self.images[orders]
@@ -60,10 +60,10 @@ class VideoFolderDataset(torch.utils.data.Dataset):
 
     def __getitem__(self, item):
         # return a training list
-        lists = [self.images[item]]
-        for i in range(len(self.followings[item])):
+        lists = [self.images[item]] # choose the start image
+        for i in range(len(self.followings[item])): # choose the following images
             lists.append(str(self.followings[item][i]))
-        return lists
+        return lists # return images
 
     def __len__(self):
         return len(self.images)
@@ -73,7 +73,7 @@ class StoryDataset(torch.utils.data.Dataset):
         # dataset: VideoFolderDataset
         # textvec: dir_path, a path to the npy file about the text
         self.dir_path = dataset.dir_path
-        self.dataset = dataset
+        self.dataset = dataset # images' paths are contained in self.dataset.images 
         lat = 'latin1'
         self.descriptions = np.load(os.path.join(textvec, 'descriptions_vec.npy'),
             allow_pickle=True,encoding=lat).item()

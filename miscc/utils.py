@@ -427,7 +427,7 @@ def inference_samples(netG, dataloader, save_path):
         cnt_gen = save_all_img(fake, cnt_gen, save_path)
         cnt_ref = save_all_img(real_imgs, cnt_ref, './Evaluation/ref')
 
-  
+
 def count_param(model):
     param_count = 0
     for param in model.parameters():

@@ -125,6 +125,8 @@ def create_id3_embedding(videos, batch_size=320):
 
 def calculate_fvd(real_activations,
                   generated_activations):
+  tf.disable_v2_behavior()
+  tf.compat.v1.enable_eager_execution()
   """Returns a list of ops that compute metrics as funcs of activations.
   Args:
     real_activations: <float32>[num_samples, embedding_size]

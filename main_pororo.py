@@ -62,6 +62,7 @@ if __name__ == "__main__":
         output_dir = './output/{}'.format(cfg.CONFIG_NAME)
         
     num_gpu = len(cfg.GPU_ID.split(','))
+    print('------Utilizing %d gpus------' % num_gpu)
     use_segment = cfg.SEGMENT_LEARNING
 
     if cfg.CASCADE_MODEL:
